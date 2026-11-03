@@ -1,0 +1,178 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Articles | ROFARIM</title>
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        .manage-container {
+            max-width: 1000px;
+            margin: 45px auto;
+            padding: 20px;
+        }
+
+        .manage-heading h2 {
+            color: #d6b66e;
+            margin-bottom: 10px;
+        }
+
+        .article-form {
+            background: #101d32;
+            border: 1px solid #c6a45c;
+            border-radius: 12px;
+            padding: 25px;
+            margin-top: 25px;
+        }
+
+        .article-form h3 {
+            color: #d6b66e;
+            margin-bottom: 20px;
+        }
+
+        .article-form input,
+        .article-form textarea {
+            width: 100%;
+            padding: 13px;
+            margin-bottom: 15px;
+            background: #081426;
+            color: white;
+            border: 1px solid #526078;
+            border-radius: 6px;
+            font-family: inherit;
+        }
+
+        .article-form textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .article-form button {
+            padding: 13px 22px;
+            margin: 5px;
+            border: none;
+            border-radius: 6px;
+            background: #c6a45c;
+            color: #081426;
+            font-weight: bold;
+        }
+
+        .article-notice {
+            margin-top: 20px;
+            color: #e5c985;
+            font-size: 14px;
+        }
+    </style>
+</head>
+
+<body>
+
+<header class="header">
+    <div class="logo">
+        <h1>ROFARIM</h1>
+        <p>ARTICLE MANAGEMENT</p>
+    </div>
+
+    <nav>
+        <a href="dashboard.html">Dashboard</a>
+        <a href="index.html">Website</a>
+    </nav>
+</header>
+
+<main class="manage-container">
+
+    <div class="manage-heading">
+        <h2>Research Article Management</h2>
+        <p>Create and prepare scientific research articles.</p>
+    </div>
+
+    <form class="article-form" id="articleForm">
+
+        <h3>Create New Research Article</h3>
+
+        <input
+            type="text"
+            id="title"
+            placeholder="Article Title"
+            required
+        >
+
+        <input
+            type="text"
+            id="authors"
+            placeholder="Author Names"
+        >
+
+        <input
+            type="text"
+            id="keywords"
+            placeholder="Keywords"
+        >
+
+        <textarea
+            id="abstract"
+            placeholder="Abstract"
+        ></textarea>
+
+        <textarea
+            id="introduction"
+            placeholder="Introduction"
+        ></textarea>
+
+        <textarea
+            id="methods"
+            placeholder="Materials and Methods"
+        ></textarea>
+
+        <textarea
+            id="results"
+            placeholder="Results"
+        ></textarea>
+
+        <textarea
+            id="discussion"
+            placeholder="Discussion"
+        ></textarea>
+
+        <textarea
+            id="conclusion"
+            placeholder="Conclusion"
+        ></textarea>
+
+        <textarea
+            id="references"
+            placeholder="References"
+        ></textarea>
+
+        <button type="button" onclick="showStatus('Draft')">
+            Save as Draft
+        </button>
+
+        <button type="button" onclick="showStatus('Publish')">
+            Publish Article
+        </button>
+
+        <p id="status" class="article-notice">
+            Article editor demonstration.
+        </p>
+
+    </form>
+
+</main>
+
+<footer class="footer">
+    <h2>ROFARIM</h2>
+    <p>Scientific Research & Publications</p>
+</footer>
+
+<script>
+    function showStatus(action) {
+        document.getElementById("status").textContent =
+            action + " is not connected yet. Backend and database are required.";
+    }
+</script>
+
+</body>
+</html>

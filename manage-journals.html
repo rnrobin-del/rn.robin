@@ -1,0 +1,176 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Journals | ROFARIM</title>
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        .manage-container {
+            max-width: 1000px;
+            margin: 45px auto;
+            padding: 20px;
+        }
+
+        .manage-heading h2 {
+            color: #d6b66e;
+            margin-bottom: 10px;
+        }
+
+        .journal-form {
+            background: #101d32;
+            border: 1px solid #c6a45c;
+            border-radius: 12px;
+            padding: 25px;
+            margin-top: 25px;
+        }
+
+        .journal-form h3 {
+            color: #d6b66e;
+            margin-bottom: 20px;
+        }
+
+        .journal-form input,
+        .journal-form textarea {
+            width: 100%;
+            padding: 13px;
+            margin-bottom: 15px;
+            background: #081426;
+            color: white;
+            border: 1px solid #526078;
+            border-radius: 6px;
+            font-family: inherit;
+        }
+
+        .journal-form textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .journal-form button {
+            padding: 13px 22px;
+            margin: 5px;
+            border: none;
+            border-radius: 6px;
+            background: #c6a45c;
+            color: #081426;
+            font-weight: bold;
+        }
+
+        .journal-notice {
+            margin-top: 20px;
+            color: #e5c985;
+            font-size: 14px;
+        }
+    </style>
+</head>
+
+<body>
+
+<header class="header">
+    <div class="logo">
+        <h1>ROFARIM</h1>
+        <p>JOURNAL MANAGEMENT</p>
+    </div>
+
+    <nav>
+        <a href="dashboard.html">Dashboard</a>
+        <a href="index.html">Website</a>
+    </nav>
+</header>
+
+<main class="manage-container">
+
+    <div class="manage-heading">
+        <h2>Research Journal Management</h2>
+        <p>Create and prepare scientific journal publications.</p>
+    </div>
+
+    <form class="journal-form" id="journalForm">
+
+        <h3>Create New Journal</h3>
+
+        <input
+            type="text"
+            id="journalTitle"
+            placeholder="Journal Title"
+            required
+        >
+
+        <input
+            type="text"
+            id="authors"
+            placeholder="Author Names"
+        >
+
+        <input
+            type="text"
+            id="volume"
+            placeholder="Volume Number"
+        >
+
+        <input
+            type="text"
+            id="issue"
+            placeholder="Issue Number"
+        >
+
+        <input
+            type="text"
+            id="doi"
+            placeholder="DOI (if available)"
+        >
+
+        <input
+            type="text"
+            id="keywords"
+            placeholder="Keywords"
+        >
+
+        <textarea
+            id="abstract"
+            placeholder="Abstract"
+        ></textarea>
+
+        <textarea
+            id="content"
+            placeholder="Journal Content"
+        ></textarea>
+
+        <textarea
+            id="references"
+            placeholder="References"
+        ></textarea>
+
+        <button type="button" onclick="showStatus('Draft')">
+            Save as Draft
+        </button>
+
+        <button type="button" onclick="showStatus('Publish')">
+            Publish Journal
+        </button>
+
+        <p id="status" class="journal-notice">
+            Journal editor demonstration.
+        </p>
+
+    </form>
+
+</main>
+
+<footer class="footer">
+    <h2>ROFARIM</h2>
+    <p>Scientific Research & Publications</p>
+</footer>
+
+<script>
+    function showStatus(action) {
+        document.getElementById("status").textContent =
+            action + " is not connected yet. Backend and database are required.";
+    }
+</script>
+
+</body>
+</html>

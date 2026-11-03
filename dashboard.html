@@ -1,0 +1,145 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ROFARIM | Admin Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        .dashboard {
+            max-width: 1100px;
+            margin: 50px auto;
+            padding: 20px;
+        }
+
+        .dashboard-heading {
+            margin-bottom: 30px;
+        }
+
+        .dashboard-heading h2 {
+            color: #d6b66e;
+            margin-bottom: 8px;
+        }
+
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+        }
+
+        .dashboard-card {
+            background: #101d32;
+            border: 1px solid #c6a45c;
+            border-radius: 12px;
+            padding: 25px;
+        }
+
+        .dashboard-card h3 {
+            color: #d6b66e;
+            margin-bottom: 12px;
+        }
+
+        .dashboard-card p {
+            color: #c5cbd5;
+            font-size: 14px;
+            margin-bottom: 18px;
+        }
+
+        .dashboard-card a {
+            display: inline-block;
+            color: #d6b66e;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .dashboard-status {
+            margin-top: 30px;
+            padding: 20px;
+            background: #101d32;
+            border-radius: 10px;
+            color: #c5cbd5;
+        }
+    </style>
+</head>
+
+<body>
+
+<header class="header">
+    <div class="logo">
+        <h1>ROFARIM</h1>
+        <p>ADMIN DASHBOARD</p>
+    </div>
+
+    <nav>
+        <a href="index.html">Website</a>
+        <a href="admin.html">Admin Login</a>
+    </nav>
+</header>
+
+<main class="dashboard">
+
+    <div class="dashboard-heading">
+        <h2>Administration Dashboard</h2>
+        <p>Manage your ROFARIM website.</p>
+    </div>
+
+    <div class="dashboard-grid">
+
+        <div class="dashboard-card">
+            <h3>Articles</h3>
+            <p>Create and manage scientific research articles.</p>
+            <a href="manage-articles.html">Manage Articles →</a>
+        </div>
+
+        <div class="dashboard-card">
+            <h3>Research Journals</h3>
+            <p>Manage journal publications and archives.</p>
+            <a href="manage-journals.html">Manage Journals →</a>
+        </div>
+
+        <div class="dashboard-card">
+            <h3>Founder Profile</h3>
+            <p>Update founder information and photograph.</p>
+            <a href="manage-founder.html">Manage Founder →</a>
+        </div>
+
+        <div class="dashboard-card">
+            <h3>Website Settings</h3>
+            <p>Manage website identity and contact information.</p>
+            <a href="settings.html">Manage Settings →</a>
+        </div>
+
+        <div class="dashboard-card">
+            <h3>Research Projects</h3>
+            <p>View research projects and initiatives.</p>
+            <a href="index.html#projects">View Projects →</a>
+        </div>
+
+        <div class="dashboard-card">
+            <h3>Public Website</h3>
+            <p>Visit the public ROFARIM website.</p>
+            <a href="index.html">Open Website →</a>
+        </div>
+
+    </div>
+
+    <div class="dashboard-status">
+        <h3>System Status</h3>
+        <p>Public website: Frontend prototype</p>
+        <p>Admin interface: Created</p>
+        <p>Authentication: Not connected</p>
+        <p>Database: Not connected</p>
+        <p>Publishing system: Not connected</p>
+    </div>
+
+</main>
+
+<footer class="footer">
+    <h2>ROFARIM</h2>
+    <p>Administrative Control Center</p>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,218 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Founder Management | ROFARIM</title>
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        .manage-container {
+            max-width: 900px;
+            margin: 45px auto;
+            padding: 20px;
+        }
+
+        .founder-form {
+            background: #101d32;
+            border: 1px solid #c6a45c;
+            border-radius: 12px;
+            padding: 25px;
+            margin-top: 25px;
+        }
+
+        .founder-form h2 {
+            color: #d6b66e;
+            margin-bottom: 20px;
+        }
+
+        .founder-form label {
+            display: block;
+            color: #d6b66e;
+            margin-bottom: 8px;
+        }
+
+        .founder-form input,
+        .founder-form textarea {
+            width: 100%;
+            padding: 13px;
+            margin-bottom: 18px;
+            background: #081426;
+            color: white;
+            border: 1px solid #526078;
+            border-radius: 6px;
+            font-family: inherit;
+        }
+
+        .founder-form textarea {
+            min-height: 110px;
+        }
+
+        .founder-form button {
+            padding: 13px 25px;
+            background: #c6a45c;
+            color: #081426;
+            border: none;
+            border-radius: 6px;
+            font-weight: bold;
+        }
+
+        .founder-preview {
+            margin-top: 25px;
+            padding: 20px;
+            background: #101d32;
+            border-radius: 10px;
+        }
+
+        .founder-preview h3 {
+            color: #d6b66e;
+            margin-bottom: 12px;
+        }
+
+        #previewImage {
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 50%;
+            margin-bottom: 15px;
+            display: none;
+        }
+
+        #status {
+            margin-top: 15px;
+            color: #e5c985;
+        }
+    </style>
+</head>
+
+<body>
+
+<header class="header">
+    <div class="logo">
+        <h1>ROFARIM</h1>
+        <p>FOUNDER MANAGEMENT</p>
+    </div>
+
+    <nav>
+        <a href="dashboard.html">Dashboard</a>
+        <a href="index.html">Website</a>
+    </nav>
+</header>
+
+<main class="manage-container">
+
+    <form class="founder-form" id="founderForm">
+
+        <h2>Manage Founder Profile</h2>
+
+        <label>Founder Name</label>
+        <input type="text" id="founderName"
+            value="RN. Robin">
+
+        <label>Position</label>
+        <input type="text" id="position"
+            value="Founder & CEO">
+
+        <label>Organization</label>
+        <input type="text" id="organization"
+            value="ROFARIM Pharmaceutical Company Limited">
+
+        <label>Founder Photograph</label>
+        <input type="file" id="founderImage"
+            accept="image/*">
+
+        <label>Biography</label>
+        <textarea id="biography"
+            placeholder="Write founder biography..."></textarea>
+
+        <label>Research Interests</label>
+        <textarea id="research"
+            placeholder="Hormonal Development, Molecular Medicine, Neuroscience..."></textarea>
+
+        <label>Email Address</label>
+        <input type="email" id="email"
+            value="rn.robinmondol@gmail.com">
+
+        <label>Phone Number</label>
+        <input type="text" id="phone"
+            value="+880 1793-175803">
+
+        <button type="submit">Preview Profile</button>
+
+        <p id="status"></p>
+
+    </form>
+
+    <div class="founder-preview">
+        <h3>Founder Profile Preview</h3>
+
+        <img id="previewImage" alt="Founder">
+
+        <h2 id="previewName">RN. Robin</h2>
+        <p id="previewPosition">Founder & CEO</p>
+        <p id="previewOrganization">
+            ROFARIM Pharmaceutical Company Limited
+        </p>
+        <p id="previewBiography"></p>
+        <p id="previewResearch"></p>
+        <p id="previewEmail"></p>
+        <p id="previewPhone"></p>
+    </div>
+
+</main>
+
+<footer class="footer">
+    <h2>ROFARIM</h2>
+    <p>Founder Administration</p>
+</footer>
+
+<script>
+    const form = document.getElementById("founderForm");
+
+    form.addEventListener("submit", function(event) {
+        event.preventDefault();
+
+        document.getElementById("previewName").textContent =
+            document.getElementById("founderName").value;
+
+        document.getElementById("previewPosition").textContent =
+            document.getElementById("position").value;
+
+        document.getElementById("previewOrganization").textContent =
+            document.getElementById("organization").value;
+
+        document.getElementById("previewBiography").textContent =
+            document.getElementById("biography").value;
+
+        document.getElementById("previewResearch").textContent =
+            document.getElementById("research").value;
+
+        document.getElementById("previewEmail").textContent =
+            document.getElementById("email").value;
+
+        document.getElementById("previewPhone").textContent =
+            document.getElementById("phone").value;
+
+        document.getElementById("status").textContent =
+            "Profile preview updated. Permanent website saving requires a backend.";
+    });
+
+    document.getElementById("founderImage")
+        .addEventListener("change", function() {
+
+            const file = this.files[0];
+
+            if (file) {
+                const imageURL = URL.createObjectURL(file);
+
+                const preview = document.getElementById("previewImage");
+
+                preview.src = imageURL;
+                preview.style.display = "block";
+            }
+        });
+</script>
+
+</body>
+</html>

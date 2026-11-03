@@ -1,0 +1,133 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ROFARIM | Admin Panel</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .admin-container {
+            max-width: 650px;
+            margin: 80px auto;
+            padding: 30px;
+        }
+
+        .admin-box {
+            background: #101d32;
+            border: 1px solid #c6a45c;
+            border-radius: 12px;
+            padding: 30px;
+        }
+
+        .admin-box h2 {
+            color: #d6b66e;
+            margin-bottom: 10px;
+        }
+
+        .admin-box p {
+            color: #c5cbd5;
+            margin-bottom: 25px;
+        }
+
+        .admin-box input {
+            width: 100%;
+            padding: 14px;
+            margin: 10px 0;
+            border: 1px solid #526078;
+            border-radius: 6px;
+            background: #081426;
+            color: white;
+        }
+
+        .admin-box button {
+            width: 100%;
+            padding: 14px;
+            margin-top: 15px;
+            background: #c6a45c;
+            color: #081426;
+            border: none;
+            border-radius: 6px;
+            font-weight: bold;
+        }
+
+        .admin-notice {
+            font-size: 13px;
+            margin-top: 20px;
+            color: #e5c985;
+        }
+    </style>
+</head>
+
+<body>
+
+<header class="header">
+    <div class="logo">
+        <h1>ROFARIM</h1>
+        <p>ADMINISTRATION</p>
+    </div>
+
+    <nav>
+        <a href="index.html">Public Website</a>
+    </nav>
+</header>
+
+<main class="admin-container">
+    <div class="admin-box">
+        <h2>Admin Login</h2>
+
+        <p>
+            Authorized administration access only.
+        </p>
+
+        <form id="loginForm">
+            <input
+                type="email"
+                id="email"
+                placeholder="Admin Email"
+                required
+            >
+
+            <input
+                type="password"
+                id="password"
+                placeholder="Password"
+                required
+            >
+
+            <button type="submit">
+                Sign In
+            </button>
+        </form>
+
+        <div id="message"></div>
+
+        <p class="admin-notice">
+            Security notice: This is currently a
+            demonstration login interface.
+            Secure authentication will require a
+            backend server and database.
+        </p>
+    </div>
+</main>
+
+<footer class="footer">
+    <h2>ROFARIM</h2>
+    <p>Administrative Portal</p>
+</footer>
+
+<script>
+    document.getElementById("loginForm")
+        .addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            document.getElementById("message").textContent =
+                "Login system is not connected yet. Backend setup is required.";
+
+            document.getElementById("message").style.color =
+                "#e5c985";
+        });
+</script>
+
+</body>
+</html>
