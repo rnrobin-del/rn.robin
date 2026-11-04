@@ -1,0 +1,245 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ROFARIM | Registration</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 25px 15px;
+    font-family: Arial, sans-serif;
+    background: #f1f5f9;
+    color: #172554;
+}
+
+.container {
+    max-width: 650px;
+    margin: 25px auto;
+    background: white;
+    padding: 30px;
+    border-radius: 14px;
+    box-shadow: 0 5px 25px rgba(0,0,0,0.08);
+}
+
+.logo {
+    text-align: center;
+    color: #087f5b;
+    font-size: 30px;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+.subtitle {
+    text-align: center;
+    color: #64748b;
+    margin-bottom: 25px;
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+label {
+    display: block;
+    font-weight: bold;
+    margin: 16px 0 7px;
+}
+
+input, select, textarea {
+    width: 100%;
+    padding: 13px;
+    border: 1px solid #cbd5e1;
+    border-radius: 7px;
+    font-size: 15px;
+}
+
+textarea {
+    min-height: 100px;
+    resize: vertical;
+}
+
+button {
+    width: 100%;
+    padding: 14px;
+    margin-top: 22px;
+    border: none;
+    border-radius: 7px;
+    background: #087f5b;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+button:disabled {
+    opacity: 0.6;
+}
+
+#message {
+    margin-top: 18px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.back {
+    display: block;
+    text-align: center;
+    margin-top: 20px;
+    color: #087f5b;
+    text-decoration: none;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="logo">ROFARIM</div>
+
+    <p class="subtitle">
+        Research Institute
+    </p>
+
+    <h2>Registration Application</h2>
+
+    <form id="registrationForm">
+
+        <label>Full Name *</label>
+        <input
+            type="text"
+            id="full_name"
+            required
+            placeholder="Enter your full name"
+        >
+
+        <label>Email Address *</label>
+        <input
+            type="email"
+            id="email"
+            required
+            placeholder="Enter your email"
+        >
+
+        <label>Institution</label>
+        <input
+            type="text"
+            id="institution"
+            placeholder="College / University / Organization"
+        >
+
+        <label>Registration Type *</label>
+        <select id="registration_type" required>
+            <option value="">Select your category</option>
+            <option value="Researcher">Researcher</option>
+            <option value="Student">Student</option>
+            <option value="Research Member">Research Member</option>
+        </select>
+
+        <label>Research Interest</label>
+        <textarea
+            id="research_interest"
+            placeholder="Describe your research interests"
+        ></textarea>
+
+        <label>Application Reason</label>
+        <textarea
+            id="application_reason"
+            placeholder="Why do you want to join ROFARIM?"
+        ></textarea>
+
+        <button type="submit" id="submitButton">
+            Submit Application
+        </button>
+
+    </form>
+
+    <div id="message" role="status"></div>
+
+    <a href="index.html" class="back">
+        ← Back to Home
+    </a>
+
+</div>
+
+<script type="module">
+import { createClient }
+from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm";
+
+const SUPABASE_URL =
+"https://cvhbxszgoybjclgtxlxj.supabase.co";
+
+const SUPABASE_PUBLISHABLE_KEY =
+"sb_publishable_-0q813TnCBxaBtfR-4zDPQ_h75V5CGR";
+
+const supabase = createClient(
+    SUPABASE_URL,
+    SUPABASE_PUBLISHABLE_KEY
+);
+
+const form = document.getElementById("registrationForm");
+const message = document.getElementById("message");
+const button = document.getElementById("submitButton");
+
+form.addEventListener("submit", async function(event) {
+
+    event.preventDefault();
+
+    button.disabled = true;
+    button.textContent = "Submitting...";
+    message.textContent = "";
+
+    const application = {
+        full_name: document.getElementById("full_name").value.trim(),
+        email: document.getElementById("email").value.trim(),
+        institution: document.getElementById("institution").value.trim(),
+        registration_type: document.getElementById("registration_type").value,
+        research_interest: document.getElementById("research_interest").value.trim(),
+        application_reason: document.getElementById("application_reason").value.trim(),
+        status: "Pending"
+    };
+
+    try {
+
+        const { error } = await supabase
+            .from("rofarim_applications")
+            .insert([application]);
+
+        if (error) {
+            throw error;
+        }
+
+        message.style.color = "green";
+        message.textContent =
+            "Application submitted successfully! Your application is pending admin approval.";
+
+        form.reset();
+
+    } catch (error) {
+
+        console.error(error);
+
+        message.style.color = "red";
+        message.textContent =
+            "Application failed. Please try again later.";
+
+    } finally {
+
+        button.disabled = false;
+        button.textContent = "Submit Application";
+
+    }
+
+});
+</script>
+
+</body>
+</html>
